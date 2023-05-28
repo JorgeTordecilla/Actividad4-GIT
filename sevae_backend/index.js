@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
-
 const { dbConnection } = require("./database/config");
 
 require("dotenv").config();
@@ -14,6 +13,9 @@ dbConnection();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(express.static("./public"));
+app.use("/api/auth/", require("./routes/auth"));
 
 app.listen(PORT, () =>
   console.log(`Servidor corriendo http://localhost:${PORT}`)
