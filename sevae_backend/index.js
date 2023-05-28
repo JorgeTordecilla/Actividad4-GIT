@@ -6,6 +6,7 @@ require("dotenv").config();
 const PORT = process.env.PORT;
 
 const app = express();
+require("./swaggerConfig")(app);
 
 app.use(cors());
 app.use(express.json());
